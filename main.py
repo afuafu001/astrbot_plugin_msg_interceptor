@@ -10,7 +10,7 @@ class MsgInterceptor(Star):
         super().__init__(context)
     
     # 修正1：添加filter前缀和正确的事件类型
-    @filter.event_message_type(EventMessageType.PRIVATE)
+    @filter.event_message_type(EventMessageType.ALL)
     async def message_intercept(self, event: AstrMessageEvent):
         try:
             raw_data = json.loads(event.raw_message)
