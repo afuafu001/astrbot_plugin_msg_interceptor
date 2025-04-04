@@ -27,7 +27,7 @@ class MsgInterceptor(Star):
      def __init__(self, context: Context):
          super().__init__(context)
         
-    @filter.event_message_type(EventMessageType.PRIVATE_MESSAGE)
+    @event_message_type(EventMessageType.PRIVATE_MESSAGE)
     async def message_intercept(self, event: AstrMessageEvent):
         try:
             # 解析JSON格式的原始消息
