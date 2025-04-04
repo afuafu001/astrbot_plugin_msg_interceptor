@@ -13,7 +13,7 @@ class MsgInterceptor(Star):
     @filter.event_message_type(EventMessageType.ALL)
     async def message_intercept(self, event: AstrMessageEvent):
         try:
-            raw_data = json.loads(event.raw_message)
+            raw_data = json.loads(event.message_obj)
             if "msg" in raw_data:
                 # 修正2：使用标准消息修改方法
                 event = event.update_message(raw_data["msg"])
