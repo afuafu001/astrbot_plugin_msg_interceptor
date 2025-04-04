@@ -21,7 +21,7 @@ from astrbot.api import logger
 #         '''可选择实现 terminate 函数，当插件被卸载/停用时会调用。'''
 import json
 
-@register("msg_interceptor", "消息拦截器", "1.0")
+@register("msg_interceptor", "afu", "消息拦截器", "1.0.0")
 class MsgInterceptor(Star):
     def __init__(self, ctx):
         super().__init__(ctx)
