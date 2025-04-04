@@ -19,9 +19,6 @@ from astrbot.api import logger
 
 #     async def terminate(self):
 #         '''可选择实现 terminate 函数，当插件被卸载/停用时会调用。'''
-
-from astrbot import Star, register, filter
-from astrbot.types import AstrMessageEvent
 import json
 
 @register("msg_interceptor", "消息拦截器", "1.0")
