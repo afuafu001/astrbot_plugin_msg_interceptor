@@ -1,6 +1,9 @@
 from astrbot.api.event import filter, AstrMessageEvent
 from astrbot.api.star import Context, Star, register
-from astrbot.core.platform.message_type import MessageType
+from astrbot.core.star.filter.event_message_type import (
+    EventMessageTypeFilter,
+    EventMessageType,
+)
 import json
 
 @register("msg_interceptor", "afu", "消息拦截器", "1.0.0")
