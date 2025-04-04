@@ -23,8 +23,8 @@ import json
 
 @register("msg_interceptor", "afu", "消息拦截器", "1.0.0")
 class MsgInterceptor(Star):
-    def __init__(self, ctx):
-        super().__init__(ctx)
+     def __init__(self, context: Context):
+         super().__init__(context)
         
     @filter.event_message_type(filter.EventMessageType.ALL)
     async def message_intercept(self, event: AstrMessageEvent):
