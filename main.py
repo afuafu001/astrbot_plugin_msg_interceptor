@@ -2,6 +2,9 @@ from astrbot.api.event import filter, AstrMessageEvent, MessageEventResult
 from astrbot.api.star import Context, Star, register
 from astrbot.api import logger
 
+from astrbot.api.event import filter, AstrMessageEvent
+from astrbot.api.provider import LLMResponse
+
 # @register("helloworld", "YourName", "一个简单的 Hello World 插件", "1.0.0")
 # class MyPlugin(Star):
 #     def __init__(self, context: Context):
@@ -26,7 +29,7 @@ class MsgInterceptor(Star):
      def __init__(self, context: Context):
          super().__init__(context)
         
-    @filter.event_message_type(filter.EventMessageType.ALL)
+    @event_message_type(EventMessageType.PRIVATE_MESSAGE)
     async def message_intercept(self, event: AstrMessageEvent):
         try:
             # 解析JSON格式的原始消息
@@ -44,3 +47,7 @@ class MsgInterceptor(Star):
         except json.JSONDecodeError:
             # 非JSON消息保持原样（网页3的错误处理参考）
             return event
+
+    @filter.on_llm_response()
+    async def on_llm_resp(self, event: AstrMessageEvent, resp: LLMResponse): # 请注意有三个参数
+        print(resp)
